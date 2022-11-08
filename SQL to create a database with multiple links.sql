@@ -1,13 +1,14 @@
-CREATE TABLE Customer ( 
+/*This table has been created to store the customers main details*/
+CREATE TABLE Customer (  
 customerID int AUTO_INCREMENT,
 customerFirstName varchar(50),
 customerLastName varchar(50),  
 customerEmail varchar(50),
  customerPostCode char(8), 
  customerTelephone varchar(20), 
- CONSTRAINT PRIMARY KEY (customerID) ); 
+ CONSTRAINT PRIMARY KEY (customerID) ); /*this is the primary key which will be used through the database as a reference */
  
-DROP TABLE Customer;
+DROP TABLE Customer;/*this is to show/test if the drop command works*/
 
 CREATE TABLE Customer ( 
 customerID int AUTO_INCREMENT, 
@@ -19,12 +20,12 @@ customerEmail varchar(50),
  CONSTRAINT PRIMARY KEY (customerID) ); 
 
  
-CREATE TABLE Enquiry ( 
+CREATE TABLE Enquiry ( /*this table has been created for any enquiry the customer has made, this can then be changed into a reservation if they wanted to proceed to make one*/
 enquiryID int AUTO_INCREMENT,
  customerID int,
  enquiryDetails LONGTEXT, 
  CONSTRAINT PRIMARY KEY (enquiryID), 
- FOREIGN KEY (customerID) REFERENCES Customer(customerID) );
+ FOREIGN KEY (customerID) REFERENCES Customer(customerID) );/*this is using the primary key from the customer table in order to connect them to the enquiry they made*/
 
 CREATE TABLE Reservation(
 reservationID INT PRIMARY KEY,
@@ -124,6 +125,8 @@ CONSTRAINT orderID_FK FOREIGN KEY (orderID) REFERENCES Orderr(orderID) );
 
 
 ALTER TABLE ManufacturerAndSupplier ADD CONSTRAINT orderlineID_FKFK FOREIGN KEY (orderlineID_FK) REFERENCES Orderline(orderlineID);
+
+/*from this point onwards is where I fill the data into the database*/
 
 INSERT INTO Customer(customerFirstName, customerLastName, customerEmail, customerPostCode, customerTelephone) #Appendix D - List of customers
 VALUES
